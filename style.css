@@ -1,0 +1,135 @@
+/* =========================================================
+   SOFISTICATO GESSO - estilos
+   Para mudar as cores do site inteiro, edite só o bloco :root
+   ========================================================= */
+:root {
+  --azul-escuro: #0a2a5e;   /* azul-marinho do logo */
+  --ciano: #14b4f0;         /* ciano do logo */
+  --ciano-escuro: #0a8fc4;  /* ciano para texto sobre fundo claro */
+  --branco: #ffffff;
+  --cinza-claro: #eef3f8;
+  --texto: #1b2433;
+  --borda: #d5dfeb;
+  --raio: 10px;
+  --largura: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--branco);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--ciano-escuro); }
+h1, h2, h3 { color: var(--azul-escuro); line-height: 1.2; margin: 0 0 .5em; }
+h1 { font-size: clamp(1.9rem, 6vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4.5vw, 2.1rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--ciano); outline-offset: 3px; }
+
+.container { width: 100%; max-width: var(--largura); margin: 0 auto; padding: 0 1.25rem; }
+.texto-estreito { max-width: 680px; }
+
+/* ---------- Cabeçalho e menu ---------- */
+.topo { position: sticky; top: 0; z-index: 20; background: var(--azul-escuro); }
+.topo-linha { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+.marca { color: var(--branco); font-weight: 800; font-size: 1.25rem; text-decoration: none; letter-spacing: .02em; }
+.marca span { color: var(--ciano); font-weight: 600; }
+
+.menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.menu-botao { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 48px; height: 48px; padding: 12px; cursor: pointer; }
+.menu-botao span { display: block; height: 3px; background: var(--branco); border-radius: 2px; }
+.menu-toggle:focus-visible + .menu-botao { outline: 3px solid var(--ciano); }
+
+.menu { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--azul-escuro); border-top: 1px solid rgba(255,255,255,.15); }
+.menu-toggle:checked ~ .menu { display: block; }
+.menu ul { list-style: none; margin: 0; padding: .5rem 1.25rem 1.25rem; }
+.menu a { display: block; padding: .85rem 0; color: var(--branco); text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.12); }
+.menu a.menu-cta { margin-top: .75rem; text-align: center; background: var(--ciano); color: var(--azul-escuro); border-radius: var(--raio); border-bottom: 0; }
+
+/* ---------- Botões ---------- */
+.botoes { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.5rem; }
+.botao { display: block; text-align: center; padding: .95rem 1.4rem; border-radius: var(--raio); font-weight: 700; text-decoration: none; border: 2px solid transparent; }
+.botao-destaque { background: var(--ciano); color: var(--azul-escuro); }
+.botao-claro { background: transparent; color: var(--branco); border-color: rgba(255,255,255,.6); }
+
+/* ---------- Início (hero) ---------- */
+.hero { background: var(--azul-escuro); color: var(--branco); padding: 2.5rem 0 3rem; overflow: hidden; }
+.hero h1 { color: var(--branco); }
+.hero p { max-width: 34em; color: #d6e4f5; }
+.hero-grade { display: grid; gap: 2rem; align-items: center; }
+.hero-logo { width: min(260px, 70%); margin: 0 auto; border-radius: 50%; }
+
+/* ---------- Seções ---------- */
+.secao { padding: 3rem 0; }
+.secao-cinza { background: var(--cinza-claro); }
+.secao-escura { background: var(--azul-escuro); color: var(--branco); }
+.secao-escura h2 { color: var(--branco); }
+.intro { color: #4a5870; max-width: 36em; }
+
+/* ---------- Serviços ---------- */
+.grade { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.cartao { background: var(--branco); border: 1px solid var(--borda); border-left: 5px solid var(--ciano); border-radius: var(--raio); padding: 1.25rem; }
+.cartao p { margin: 0; }
+
+/* ---------- Passos ---------- */
+.passos { counter-reset: passo; list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1rem; }
+.passos li { counter-increment: passo; position: relative; padding-left: 3.25rem; }
+.passos li::before { content: counter(passo); position: absolute; left: 0; top: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--azul-escuro); color: var(--branco); font-weight: 700; display: grid; place-items: center; }
+
+/* ---------- Galeria ---------- */
+.galeria { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1.5rem; }
+.galeria img, .foto-vazia { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--raio); }
+.foto-vazia { display: grid; place-items: center; text-align: center; padding: .5rem; background: var(--cinza-claro); border: 2px dashed var(--borda); color: #6a7890; font-size: .95rem; }
+
+.zoom-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.miniatura { display: block; border-radius: var(--raio); cursor: zoom-in; }
+.miniatura img { transition: transform .2s; }
+.miniatura:hover img { transform: scale(1.02); }
+
+/* Foto ampliada: abre ao tocar (caixa de seleção escondida, sem JavaScript) */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 50; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; padding: 1rem; background: rgba(7, 29, 68, .95); cursor: zoom-out; }
+.zoom-toggle:checked + .miniatura + .lightbox { display: flex; }
+.zoom-toggle:checked + .miniatura + .lightbox img { aspect-ratio: auto; width: auto; height: auto; max-width: 100%; max-height: calc(100% - 3.5rem); object-fit: contain; border-radius: var(--raio); }
+.lightbox-fechar { color: var(--branco); font-weight: 700; padding: .5rem 1rem; border: 2px solid rgba(255,255,255,.6); border-radius: var(--raio); }
+
+/* ---------- Contato ---------- */
+.secao-escura a { color: var(--ciano); }
+.secao-escura .botao-destaque { color: var(--azul-escuro); }
+.secao-escura .botao-claro { color: var(--branco); }
+.contatos { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: .5rem; }
+
+/* ---------- Rodapé e botão fixo ---------- */
+.rodape { background: #071d44; color: #b8c8de; padding: 1.5rem 0 5.5rem; font-size: .9rem; }
+.rodape p { margin: 0; }
+.zap-fixo { position: fixed; right: 1rem; bottom: 1rem; z-index: 30; background: #25d366; color: #073b1a; font-weight: 800; text-decoration: none; padding: .85rem 1.2rem; border-radius: var(--raio); display: flex; align-items: center; gap: .55rem; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+
+.zap-icone { flex: none; }
+
+/* ---------- Tela maior (tablet e computador) ---------- */
+@media (min-width: 760px) {
+  .menu-botao { display: none; }
+  .menu { display: block; position: static; background: none; border: 0; }
+  .menu ul { display: flex; align-items: center; gap: 1.5rem; padding: 0; }
+  .menu a { padding: .5rem 0; border: 0; }
+  .menu a.menu-cta { margin: 0; padding: .6rem 1.1rem; }
+
+  .botoes { flex-direction: row; }
+  .botao { display: inline-block; }
+  .hero { padding: 4.5rem 0; }
+  .hero-grade { grid-template-columns: 1.3fr 1fr; }
+  .secao { padding: 4.5rem 0; }
+  .grade { grid-template-columns: repeat(3, 1fr); }
+  .passos { grid-template-columns: repeat(2, 1fr); }
+  .galeria { grid-template-columns: repeat(4, 1fr); }
+  .zap-fixo { display: none; }
+  .rodape { padding-bottom: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
